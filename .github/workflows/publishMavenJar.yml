@@ -5,7 +5,8 @@ name: deploy maven snapshot jar to packages
 
 on:
   push:
-    branches: [ release ]
+    branches:
+      - 'release*'
 
 jobs:
   build:

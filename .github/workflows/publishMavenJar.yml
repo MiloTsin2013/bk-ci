@@ -6,7 +6,7 @@ name: deploy maven snapshot jar to packages
 on:
   push:
     branches:
-      - 'release*'
+      - 'maven_publish'
 
 jobs:
   build:
@@ -30,4 +30,4 @@ jobs:
         with:
           gradle-version: 4.8.1
           build-root-directory: src/backend/ci
-          arguments: test uploadArchives -DmavenRepoUsername=${{ github.actor }} -DmavenRepoPassword=${{ secrets.GITHUB_TOKEN }} -DmavenRepoUrl="http://maven.aliyun.com/nexus/content/groups/public/" -DmavenRepoDeployUrl="https://maven.pkg.github.com/Tencent/bk-ci"
+          arguments: --debug test uploadArchives -DmavenRepoUsername=${{ github.actor }} -DmavenRepoPassword=${{ secrets.GITHUB_TOKEN }} -DmavenRepoUrl="http://maven.aliyun.com/nexus/content/groups/public/" -DmavenRepoDeployUrl="https://maven.pkg.github.com/Tencent/bk-ci"
